@@ -9,7 +9,7 @@ pip install -r /app/requirements.txt --no-cache-dir
 echo "Run migrations"
 python /app/manage.py migrate
 
-# is $@ empty 
+# is $@ empty
 if [ -z "$@" ]
 then
     echo "Run Server"

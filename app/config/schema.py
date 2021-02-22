@@ -1,4 +1,3 @@
-# TODO: Step 3 create this file
 import graphene
 
 from demo.api.graphql.dummy.query import DummyQuery

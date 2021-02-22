@@ -21,7 +21,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'graphene_django',
     'rest_framework',
-    'leon.apps.LeonConfig',
     'demo.apps.DemoConfig',
 ]
 
@@ -89,6 +88,6 @@ GRAPHENE = {"SCHEMA": "config.schema.schema"}
 # TODO: Step 2a
 GRAPHENE_DJANGO_EXTRAS = {
     'DEFAULT_PAGINATION_CLASS': 'graphene_django_extras.paginations.LimitOffsetGraphqlPagination',
-    'DEFAULT_PAGE_SIZE': 10,
-    'MAX_PAGE_SIZE': 100,
+    'DEFAULT_PAGE_SIZE': 100000,
+    'MAX_PAGE_SIZE': 100000,
 }

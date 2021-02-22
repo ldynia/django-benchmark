@@ -1,1 +1,0 @@
-LEON_EXTENSION = '.leon'

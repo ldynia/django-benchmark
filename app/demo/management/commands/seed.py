@@ -26,7 +26,7 @@ class Command(BaseCommand):
         pass
 
     def handle(self, *args, **options):
-        LIMIT = 1000
+        LIMIT = 100000
         for i in range(LIMIT):
             d = random.randint(1, 31)
             w = random.choice(WEEKDAY)

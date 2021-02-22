@@ -7,21 +7,21 @@ $ umask 113
 $ python manage.py seed
 ```
 
-```bash
-$ python manage.py leon -h
-$ python manage.py leon docs
-$ python manage.py leon init demo Dummy
 ```
-**Finally edit** `urls.py` and `schema.py`
-
 
 # Examples
+
+### REST API
+
+```bash
+$ time curl http://172.25.0.2:8080/api/rest/dummy/
+```
 
 ### Queries
 ```
 query {
   allDummy {
-    results(limit: 3) {
+    results {
       id
       day
       weekday

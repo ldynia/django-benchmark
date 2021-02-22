@@ -4,14 +4,14 @@ from graphene_django_extras import DjangoListObjectType
 from graphene_django_extras import DjangoObjectField
 from graphene_django_extras import DjangoObjectType
 
-from {{ app }}.models import {{ name }}
+from demo.models import Dummy
 
 
-class {{ name }}Type(DjangoObjectType):
+class DummyType(DjangoObjectType):
 
     class Meta:
-        model = {{ name }}
-        description = 'Type definition for a single {{ name }}.'
+        model = Dummy
+        description = 'Type definition for a single Dummy.'
         filter_fields = {
             'id': ('exact',),
             'day': ('icontains', 'iexact'),
@@ -24,11 +24,11 @@ class {{ name }}Type(DjangoObjectType):
         }
 
 
-class {{ name }}ListType(DjangoListObjectType):
+class DummyListType(DjangoListObjectType):
 
     class Meta:
-        model = {{ name }}
-        description = 'Type definition for {{ name }} list.'
+        model = Dummy
+        description = 'Type definition for Dummy list.'
         filter_fields = {
             'id': ('exact',),
             'day': ('icontains', 'iexact'),
@@ -41,6 +41,6 @@ class {{ name }}ListType(DjangoListObjectType):
         }
 
 
-class {{ name }}Query(ObjectType):
-    {{ name.lower() }}_by_id = DjangoObjectField({{ name }}Type, description='Single {{ name }} query.')
-    all_{{ name.lower() }} = DjangoListObjectField({{ name }}ListType, description='All {{ name }} query.')\
+class DummyQuery(ObjectType):
+    dummy_by_id = DjangoObjectField(DummyType, description='Single Dummy query.')
+    all_dummy = DjangoListObjectField(DummyListType, description='All Dummy query.')\
