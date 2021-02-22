@@ -7,15 +7,15 @@ $ umask 113
 $ python manage.py seed
 ```
 
-```
-
 # Examples
 
-### REST API
+## REST API
 
 ```bash
 $ time curl http://172.25.0.2:8080/api/rest/dummy/
 ```
+
+## GraphQL
 
 ### Queries
 ```
