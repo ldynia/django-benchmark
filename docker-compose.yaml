@@ -7,6 +7,8 @@ services:
     image: django/benchmark
     container_name: django-benchmark
     hostname: dev-benchmark
+    ports:
+    - 8080:8080
     volumes:
        - ./app:/app
     # command: sleep 3600

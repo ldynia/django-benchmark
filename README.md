@@ -2,17 +2,30 @@
 
 ```bash
 $ docker-compose up
-$ docker exec -it django-demo ash
+$ docker inspect django-benchmark | grep IPAddress | tail -n1 | awk '{print $2}'
+"172.26.0.2",
+
+$ docker exec -it django-benchmark ash
 $ umask 113
-$ python manage.py seed
 ```
 
 # Examples
 
-## REST API
+## Populate database with dummy data
 
 ```bash
-$ time curl http://172.25.0.2:8080/api/rest/dummy/
+$ python manage.py seed
+```
+
+## Benchmark API vs GraphQL
+
+```bash
+$ time curl http://localhost:8080/api/rest/dummy/
+$ time curl 'http://localhost:8080/api/graphql/' \
+  -H 'X-CSRFToken: 6KT7LqIWxCL0kQxnyoq64j29MRDRWGsCZA6S2t2Lxuco4mQ2fsq6xE5HQESdKQIC' \
+  -H 'Content-Type: application/json' \
+  -H 'Cookie: csrftoken=6KT7LqIWxCL0kQxnyoq64j29MRDRWGsCZA6S2t2Lxuco4mQ2fsq6xE5HQESdKQIC' \
+  --data-raw '{"query":"query { allDummy { results { id } }}","variables":null}'
 ```
 
 ## GraphQL

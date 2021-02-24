@@ -9,7 +9,7 @@ class DummySerializer(ModelSerializer):
 
     class Meta:
         model = Dummy
-        fields = ['id', 'day', 'weekday', 'month', 'year', 'pre_seeded']
+        fields = ['id']
 
 
 @api_view(['GET'])
