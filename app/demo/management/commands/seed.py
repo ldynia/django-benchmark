@@ -18,6 +18,7 @@ MONTH = (
     'October', 'November', 'December'
 )
 
+
 class Command(BaseCommand):
 
     help = 'Application seed'
@@ -38,7 +39,8 @@ class Command(BaseCommand):
             m = random.choice(MONTH)
             y = random.randint(1800, 2020)
 
-            data.append(Dummy(pre_seeded=True, day=d, weekday=w, month=m, year=y))
+            data.append(Dummy(pre_seeded=True, day=d,
+                              weekday=w, month=m, year=y))
 
             progress = math.ceil((i/LIMIT) * 100)
             print(f'\rProgress: {progress} %', end='')

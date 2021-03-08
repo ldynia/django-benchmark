@@ -20,7 +20,7 @@ $ varnishd -f /app/config/varnish.vcl -s malloc,256M -T 127.0.0.1:2000 -a 0.0.0.
 ## Populate database with dummy data
 
 ```bash
-$ python manage.py seed
+$ docker exec -it django-benchmark python manage.py seed 1000
 ```
 
 ## Benchmark API vs GraphQL
@@ -28,9 +28,8 @@ $ python manage.py seed
 ```bash
 $ time curl http://localhost:8080/api/rest/dummy/
 $ time curl 'http://localhost:8080/api/graphql/' \
-  -H 'X-CSRFToken: 6KT7LqIWxCL0kQxnyoq64j29MRDRWGsCZA6S2t2Lxuco4mQ2fsq6xE5HQESdKQIC' \
+  -X 'GET' \
   -H 'Content-Type: application/json' \
-  -H 'Cookie: csrftoken=6KT7LqIWxCL0kQxnyoq64j29MRDRWGsCZA6S2t2Lxuco4mQ2fsq6xE5HQESdKQIC' \
   --data-raw '{"query":"query { allDummy { results { id } }}","variables":null}'
 ```
 
